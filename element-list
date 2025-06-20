@@ -1,0 +1,11 @@
+module:cz.cvut.fel.pjv.mosteji1.poker
+cz.cvut.fel.pjv.mosteji1.poker
+cz.cvut.fel.pjv.mosteji1.poker.client.gameRepresentation
+cz.cvut.fel.pjv.mosteji1.poker.client.graphics
+cz.cvut.fel.pjv.mosteji1.poker.client.network
+cz.cvut.fel.pjv.mosteji1.poker.common.cards
+cz.cvut.fel.pjv.mosteji1.poker.common.game
+cz.cvut.fel.pjv.mosteji1.poker.common.player
+cz.cvut.fel.pjv.mosteji1.poker.server
+cz.cvut.fel.pjv.mosteji1.poker.server.network
+cz.cvut.fel.pjv.mosteji1.poker.utils

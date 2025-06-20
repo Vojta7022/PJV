@@ -16,7 +16,7 @@ public class PJVHodina10 {
     
     public static void main(String[] args) {     
         
-        Stack stack = null;
+        Stack stack = new MyStack(10);
         
         //inicialize producers
         Producent [] producentArray = inicializeProducers(stack);
@@ -29,15 +29,16 @@ public class PJVHodina10 {
         waitForConsuments(stack);
         
         //Interrupt consumers
-         for(int i = 0; i < consumentsArray.length; i++){
-            consumentsArray[i].interrupt();
-         }
+        for (Consument consument : consumentsArray) {
+            consument.interrupt();
+        }
         
     }
     
     private static Producent [] inicializeProducers(Stack stack) {
-        File [] files = new File(".").listFiles(txtFilter);        
-        Producent [] producentArray = new Producent[files.length];        
+        File [] files = new File(".").listFiles(txtFilter);
+        assert files != null;
+        Producent [] producentArray = new Producent[files.length];
         for(int i = 0; i < producentArray.length; i++){            
             Producent producent = new Producent(files[i], stack);
             producentArray[i] = producent;
@@ -58,9 +59,9 @@ public class PJVHodina10 {
     }
     
     private static void waitForProducents(Producent [] producents){
-        for(int i = 0; i < producents.length; i++){     
+        for (Producent producent : producents) {
             try {
-                producents[i].join();
+                producent.join();
             } catch (InterruptedException ex) {
                 Logger.getLogger(PJVHodina10.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -77,7 +78,7 @@ public class PJVHodina10 {
         }
     }
     
-    private static FilenameFilter txtFilter = new FilenameFilter() {
+    private static final FilenameFilter txtFilter = new FilenameFilter() {
             @Override
             public boolean accept(File dir, String name) {
                 return name.endsWith(".txt");
